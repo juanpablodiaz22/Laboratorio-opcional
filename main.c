@@ -41,3 +41,40 @@ void print_personas(Persona personas[], int size) {
         printf("Nombre : %s, Edad: %d, Altura(cm): %.2f\n", personas[i].name, personas[i].age, personas[i].height);
     }
 }
+
+//Se crea la funcion principal
+int main() {
+    // Arreglo de personas
+    Persona personas[10] = {
+        {"Esteban", 33, 165},
+        {"David", 41, 196},
+        {"Carlos", 22, 175},
+        {"Benjamin", 28, 160},
+        {"Alejandro", 14, 140},
+        {"Leo", 68, 170},
+        {"Valeria", 21, 188},
+        {"Rosa", 77, 155},
+        {"Tatiana", 28, 161},
+        {"Maria", 6, 100}
+    };
+
+    //Para obtener el tamano del arreglo
+    int size = sizeof(personas) / sizeof(personas[0]);
+
+    // Se ordenan las personas por nombre alfabeticamente y se muestra el resultado
+    qsort(personas, size, sizeof(Persona), compare_by_name);
+    printf("Se ordenan las personas por nombre alfabeticamente:\n");
+    print_personas(personas, size);
+
+    // Se ordenan las personas por edad, de menor a mayor y se muestra el resultado
+    qsort(personas, size, sizeof(Persona), compare_by_age);
+    printf("\nSe ordenan las personas por edad, de menor a mayor:\n");
+    print_personas(personas, size);
+
+    // Se ordenan las personas por altura, de menor a mayor y se muestra el resultado
+    qsort(personas, size, sizeof(Persona), compare_by_height);
+    printf("\nSe ordenan las personas por altura, de menor a mayor:\n");
+    print_personas(personas, size);
+
+    return 0;
+}
